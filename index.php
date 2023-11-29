@@ -6,6 +6,13 @@ if(isset($_GET['ablepark'])){
     $parking=$_GET['ablepark'];
 }
 $hotels= array_filter($hotels, fn($item) =>$parking =='all'|| $item['parking']==$parking);
+
+$stars='all';
+if(isset($_GET['stars'])){
+    $stars=$_GET['stars'];
+}
+$hotels= array_filter($hotels, fn($staritem) =>$stars =='all'|| $staritem['vote']>=$stars);
+
 ?>
 
 <!DOCTYPE html>
@@ -19,15 +26,25 @@ $hotels= array_filter($hotels, fn($item) =>$parking =='all'|| $item['parking']==
 <body>
  <header  class="container">
     <div>
-        <h1 class="m-auto mb-4">HOTEL MILANO</h1>
-        <form action="index.php" role="search" method="GET">
+        <h1 class="m-auto mb-4">HOTEL BOOL</h1>
+        <div class='d-flex'>
+            <form action="index.php" role="search" method="GET">
                 <select class="form-control me-2" placeholder="search" name="ablepark">
                     <option value='all'>tutti</option>
                     <option value='1'> parcheggio disponibile</option>
                     <option value='0'>parcheggio non disponibile</option>
                 </select>
+                <select class="form-control me-2" placeholder="search" name="stars">
+                    <option value='all'>tutti</option>
+                    <option value='1'> 1 stella o più</option>
+                    <option value='2'>2 stelle o più</option>
+                    <option value='3'>3 stelle o più</option>
+                    <option value='4'>4 stelle o più</option>
+                    <option value='5'>5 stelle</option>
+                </select>
                 <button class="btn" type="submit">filtra</button>
             </form>
+        </div>
     </div>
    
   <div class="ms-4">
