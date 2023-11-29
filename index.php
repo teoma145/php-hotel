@@ -30,17 +30,17 @@ $hotels= array_filter($hotels, fn($staritem) =>$stars =='all'|| $staritem['vote'
         <div class='d-flex'>
             <form action="index.php" role="search" method="GET">
                 <select class="form-control me-2" placeholder="search" name="ablepark">
-                    <option value='all'>tutti</option>
-                    <option value='1'> parcheggio disponibile</option>
-                    <option value='0'>parcheggio non disponibile</option>
+                    <option value='all'<?php echo ($parking == 'all') ? 'selected' : ''; ?>>tutti</option>
+                    <option value='1'<?php echo ($parking == '1') ? 'selected' : ''; ?>> parcheggio disponibile</option>
+                    <option value='0' <?php echo ($parking == '0') ? 'selected' : ''; ?>>parcheggio non disponibile</option>
                 </select>
                 <select class="form-control me-2" placeholder="search" name="stars">
-                    <option value='all'>tutti</option>
-                    <option value='1'> 1 stella o più</option>
-                    <option value='2'>2 stelle o più</option>
-                    <option value='3'>3 stelle o più</option>
-                    <option value='4'>4 stelle o più</option>
-                    <option value='5'>5 stelle</option>
+                    <option value='all'<?php echo ($stars == 'all') ? 'selected' : ''; ?>>tutti</option>
+                    <option value='1'<?php echo ($stars == '1') ? 'selected' : ''; ?>> 1 stella o più</option>
+                    <option value='2'<?php echo ($stars == '2') ? 'selected' : ''; ?>>2 stelle o più</option>
+                    <option value='3'<?php echo ($stars == '3') ? 'selected' : ''; ?>>3 stelle o più</option>
+                    <option value='4'<?php echo ($stars == '4') ? 'selected' : ''; ?>>4 stelle o più</option>
+                    <option value='5'<?php echo ($stars == '5') ? 'selected' : ''; ?>>5 stelle</option>
                 </select>
                 <button class="btn" type="submit">filtra</button>
             </form>
