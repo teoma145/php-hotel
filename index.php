@@ -1,6 +1,11 @@
 <?php
 include __DIR__."/Model/db.php";
 //var_dump($hotels)
+$parking='all';
+if(isset($_GET['ablepark'])){
+    $parking=$_GET['ablepark'];
+}
+$hotels= array_filter($hotels, fn($item) =>$parking =='all'|| $item['parking']==$parking);
 ?>
 
 <!DOCTYPE html>
@@ -13,6 +18,18 @@ include __DIR__."/Model/db.php";
 </head>
 <body>
  <header  class="container">
+    <div>
+        <h1 class="m-auto mb-4">HOTEL MILANO</h1>
+        <form action="index.php" role="search" method="GET">
+                <select class="form-control me-2" placeholder="search" name="ablepark">
+                    <option value='all'>tutti</option>
+                    <option value='1'> parcheggio disponibile</option>
+                    <option value='0'>parcheggio non disponibile</option>
+                </select>
+                <button class="btn" type="submit">filtra</button>
+            </form>
+    </div>
+   
   <div class="ms-4">
   <table class="table">
   <tr>
